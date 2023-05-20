@@ -1,11 +1,15 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Wallet from "../../components/Wallet";
+import Wallet from '../../components/Wallet'
+import Switch from '../../components/Switch'
 const Main = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#141e30] to-[#243b55]">
       <Wallet />
-
+      <Switch />
+      <div className=''>
+        <Link to='/create'><button>CREATE</button></Link>
       <div className="w-full flex gap-6 justify-center">
         <Link
           to="/create"
