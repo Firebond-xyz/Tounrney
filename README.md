@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+<p align="center">
+  <a href="" rel="noopener">
+<img src="https://uploads-ssl.webflow.com/6458f7b5632c534c43d7bf2f/645b6ad92c2a7120c874ff53_FIREBOND2x.png"></a>
+<img src="https://app.glitch-hack.com/_next/image?url=%2Fimg%2Fglitch_korea_thumbnail.png&w=640&q=75"></a>  
+</p>
+  
+## 📝 Table of Content
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- [Problem Statement](#problem_statement)
+- [Idea / Solution](#idea)
+- [Problem we solve](#future_scope)
+- [what we provide](#getting_started)
 
-## Available Scripts
 
-In the project directory, you can run:
+## 🧐 Problem Statement <a name = "problem_statement"></a>
 
-### `npm start`
+Currently, there is a lack of an easy and efficient solution for setting up and monitoring tournaments on-chain. Existing solutions in the web2 space do not provide the necessary visibility into the distribution of funds and the actual games played during the tournament. This creates challenges in terms of transparency and accountability.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Moreover, the process of manually distributing rewards by event organizers is complicated, especially when regulatory requirements come into play. Using platforms like Stripe to distribute prize money introduces additional complexities and potential compliance issues.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 💡 Idea / Solution <a name = "idea"></a>
+To address the first problem, we have developed a comprehensive solution that enables the generation of game brackets for tournament participants. This ensures clarity on the stages of the tournament and the progress of players. By leveraging blockchain technology, we provide a transparent and secure platform for organizing and tracking tournaments.
 
-### `npm test`
+Additionally, we have implemented an automated reward distribution smart contract to alleviate the burden on tournament organizers. This smart contract takes care of distributing rewards to the winners, eliminating the need for manual intervention and reducing the potential for fund mismanagement. By leveraging blockchain's immutable and auditable nature, we ensure the integrity and fairness of the reward distribution process.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Overall, our solution aims to revolutionize tournament organization by providing an efficient and transparent platform for setting up and monitoring tournaments on-chain. Through automated reward distribution and enhanced visibility, we strive to streamline the tournament experience for organizers and participants alike, while ensuring compliance with regulatory requirements.
 
-### `npm run build`
+## 🚀 Problem we Solve <a name = "future_scope"></a>
+1. There is no easy solution to set up and monitor tournaments on-chain today. Existing solutions for web2 tournament organization, have no visibility on where funds are being distributed and the actual games that were played during the tournament
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Reward distribution is still done manually by event organizers and is further complicated by regulatory requirements when using the likes of Stripe
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Reputation of gamers are not very clear in the context of games. This leads to highly mismatched participants where experienced gamers are matched with junior gamers
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🍩 What we Provide :- <a name = "getting_started"></a>
+1. A solution that generates brackets of games to be played for participants, with clarity on which the stage the players are at in the tournament
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. An automated reward distribution smart contract that will remove the hassle for tournament organizers and ensure no mismanagement in the process\
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Polygon ID is used to share and record credentials of the participants within the game
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
