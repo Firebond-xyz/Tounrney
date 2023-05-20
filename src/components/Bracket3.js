@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // import "./App.css";
 import { Bracket } from "react-tournament-bracket";
 const game2 = {
@@ -229,7 +230,7 @@ const Teams = [
   // <Bracket game={game6Test} />,
   // <Bracket game={final} />,
 ];
-const Brackets = () => {
+const Bracket3 = () => {
   return (
     <div class="min-h-screen min-w-fit bg-gradient-to-br from-[#141e30] to-[#243b55]">
       {Teams.map((Team, index) => (
@@ -245,12 +246,12 @@ const Brackets = () => {
         </div>
       ))}
       <div className="flex justify-center items-center">
-        <button className="mt-4 border border-white text-white bg-blue-500 px-4 py-2 rounded-md">
+        <Link to="/winner" className="mt-4 border border-white text-white bg-blue-500 px-4 py-2 rounded-md">
           Next Rounds
-        </button>
+        </Link>
       </div>
     </div>
   );
 };
 
-export default Brackets;
+export default Bracket3;
