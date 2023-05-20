@@ -1,6 +1,11 @@
 import React from 'react'
 
-const WinnerPage = ({title}) => {
+const WinnerPage = ({ title }) => {
+  const storedTransaction = localStorage.getItem("transaction");
+  if (storedTransaction) {
+    const transaction = JSON.parse(storedTransaction);
+    title = transaction;
+  }
   return (
     <div className='min-h-screen bg-black relative'>
         <img src='bg.jpg' className='h-full w-full object-cover'/>

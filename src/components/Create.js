@@ -88,6 +88,7 @@ const Create = () => {
     if (data?.status === 0) {
       console.log("status: " + data?.status + "hash: " + data?.transactionHash);
     }
+    await localStorage.setItem("transaction", JSON.stringify(transaction));
   };
   const handleWinnersPayout = (e) => {
     const commaSeparatedString = e.target.value;
