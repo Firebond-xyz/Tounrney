@@ -227,9 +227,9 @@ const final = {
 
 const Brackets = () => {
   return <div>
-  <Bracket game={game1} />
+  {/* <Bracket game={game1} /> */}
       <Bracket game={game6Test} />
-      <Bracket game={final} />
+      {/* <Bracket game={final} /> */}
 
 
   </div>;
