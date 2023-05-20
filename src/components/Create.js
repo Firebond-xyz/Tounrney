@@ -22,7 +22,7 @@ const Create = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#141e30] to-[#243b55]">
+    <div className="min-h-screen min-w-fit bg-gradient-to-br from-[#141e30] to-[#243b55]">
       <h1 className="font-bold font-signature text-center text-5xl p-8 text-white mb-12">
         Tournament Bracket Generator
       </h1>
