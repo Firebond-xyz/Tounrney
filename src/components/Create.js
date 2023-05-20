@@ -24,9 +24,9 @@ const Create = () => {
       playerIds,
       participantCount,
       gameName,
-      rounds,
+      totalRounds,
       winnerpay,
-      roundwin,
+      roundWinner,
       id
     });
   };
@@ -55,7 +55,7 @@ const Create = () => {
     );
     let totalAmount = 0;
     for (let i = 0; i < winnerpay.length; i++) {
-      totalAmount= totalAmount +(winnerpay[i]*roundwin[i]);
+      totalAmount= totalAmount +(winnerpay[i]*roundWinner[i]);
     }
 
     const transaction = await contract.createTournament(
@@ -88,7 +88,7 @@ const Create = () => {
       <h1 className="font-bold font-signature text-center text-5xl p-8 text-white mb-12">
         Tournament Bracket Generator
       </h1>
-      <h3>
+      <h3 className="font-bold font-signature text-center text-5xl p-8 text-white mb-12">
         the current Tournament Id is: <b>{id}</b>
       </h3>
       <div className="w-full flex justify-center items-center">
