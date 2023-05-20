@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ethers } from "ethers";
+import brackets from "../abi/bracket.json";
 
 const Create = () => {
   const [tournamentName, setTournamentName] = useState("");
@@ -7,12 +9,10 @@ const Create = () => {
   const [playerIds, setPlayerIds] = useState("");
   const [participantCount, setParticipantCount] = useState("");
   const [gameName, setGameName] = useState("");
-  const [totalRounds, setTotalRounds] = useState("")
-  const [roundWinner, setRoundWinner] = useState("")
-  const [payment, setPayment] = useState("")
-  const [roundWinners, setRoundWinners] = useState([]);
-  const [payments, setPayments] = useState([]);
-  const [totalParticipants,setTotalParticipants] = useState("");
+  const [totalRounds, setTotalRounds] = useState("");
+  const [winnerpay, setWinnerpay] = useState([]);
+  const [roundWinner, setRoundWinner] = useState([]);
+  const [id, setId] = useState("");
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -24,24 +24,73 @@ const Create = () => {
       playerIds,
       participantCount,
       gameName,
+      rounds,
+      winnerpay,
+      roundwin,
+      id
     });
   };
 
-  useEffect(()=>{
-    // Spliting payments using , separator
-    const newPayments = payment.split(',')
-    setPayments(newPayments);
+  function generateRandomId() {
+    const timestamp = Date.now().toString(36); // Get current timestamp and convert it to base-36 string
 
-    // spliting round winners using , separator
-    const newWinners = roundWinner.split(',')
-    setRoundWinners(newWinners);
-  },[payment,roundWinner])
+    return timestamp;
+  }
 
+  // Example usage
+  useEffect(() => {
+    setId(generateRandomId());
+  }, []);
+  const handleSubmit = async () => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    // const accounts = await provider.listAccounts();
+    const signer = provider.getSigner();
+    const signerAddress = await signer.getAddress();
+
+
+    const contract = new ethers.Contract(
+      "0xdF3B919239A65047A1C0eCF40D8e8C9621A94459",
+      brackets.abi,
+      signer
+    );
+    let totalAmount = 0;
+    for (let i = 0; i < winnerpay.length; i++) {
+      totalAmount= totalAmount +(winnerpay[i]*roundwin[i]);
+    }
+
+    const transaction = await contract.createTournament(
+      [signerAddress, totalRounds, winnerpay, roundWinner, 0],
+      id,
+      { value: totalAmount }
+    );
+
+    const data = await provider.waitForTransaction(transaction.hash, 1);
+    if (data?.status === 0) {
+      console.log("status: " + data?.status + "hash: " + data?.transactionHash);
+    }
+  };
+  const handleWinnersPayout = (e) => {
+    const commaSeparatedString = e.target.value;
+    const array = commaSeparatedString.split(",");
+    const numArray = array.map(Number);
+    setWinnerpay(numArray);
+
+  }
+  const handleWinnersNumbers = (e) => {
+    const commaSeparatedString = e.target.value;
+    const array = commaSeparatedString.split(",");
+    const numArray = array.map(Number);
+    setRoundWinner(numArray);
+
+  }
   return (
     <div className="min-h-screen min-w-fit bg-gradient-to-br from-[#141e30] to-[#243b55]">
       <h1 className="font-bold font-signature text-center text-5xl p-8 text-white mb-12">
         Tournament Bracket Generator
       </h1>
+      <h3>
+        the current Tournament Id is: <b>{id}</b>
+      </h3>
       <div className="w-full flex justify-center items-center">
         <form className="" onSubmit={handleFormSubmit}>
           {/* Tournament name */}
@@ -137,7 +186,7 @@ const Create = () => {
                 type="text"
                 id="roundWinner"
                 value={roundWinner}
-                onChange={(e) => {setRoundWinner(e.target.value)}}
+                onChange={(e) => {handleWinnersNumbers(e)}}
               />
             </div>
           </div>
@@ -156,8 +205,8 @@ const Create = () => {
                 className="w-full h-full rounded-lg bg-inherit px-6 overflow-hidden text-ellipsis outline-amber-600 text-white font-base font-normal"
                 type="text"
                 id="payment"
-                value={payment}
-                onChange={(e) => setPayment(e.target.value)}
+                value={winnerpay}
+                onChange={(e) => handleWinnersPayout(e)}
               />
             </div>
           </div>
@@ -208,7 +257,7 @@ const Create = () => {
                 to="/brackets"
                 className="w-auto text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 "
               >
-                <button type="submit">Submit</button>
+                <button type="submit" onClick={()=>handleSubmit()}>Submit</button>
               </Link>
             </div>
           </div>
