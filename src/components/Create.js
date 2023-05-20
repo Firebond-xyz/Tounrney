@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Team from "./Team";
 
 const Create = () => {
   const [tournamentName, setTournamentName] = useState("");
@@ -7,9 +8,21 @@ const Create = () => {
   const [playerIds, setPlayerIds] = useState("");
   const [participantCount, setParticipantCount] = useState("");
   const [gameName, setGameName] = useState("");
+  const [totalRounds, setTotalRounds] = useState("");
+  const [roundWinner, setRoundWinner] = useState("");
+  const [payment, setPayment] = useState("");
+  const [roundWinners, setRoundWinners] = useState([]);
+  const [payments, setPayments] = useState([]);
+  const [totalParticipants, setTotalParticipants] = useState("");
+
+  const [nosOfTeam, setNosOfTeam] = useState(0);
+  const [Cards, setCards] = useState([]);
+
+  const navigate = useNavigate();
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    const jsonData = {};
     // Perform any necessary form validation or submission logic here
     // You can access the form values using the state variables
     console.log({
@@ -19,6 +32,33 @@ const Create = () => {
       participantCount,
       gameName,
     });
+    try {
+      navigate("/brackets", { state: jsonData });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    // Spliting payments using , separator
+    const newPayments = payment.split(",");
+    setPayments(newPayments);
+
+    // spliting round winners using , separator
+    const newWinners = roundWinner.split(",");
+    setRoundWinners(newWinners);
+  }, [payment, roundWinner]);
+
+  const handleRendering = () => {
+    if (nosOfTeam & 1) {
+      return;
+    }
+    const Items = [];
+    for (let i = 0; i < nosOfTeam; i++) {
+      Items.push(<Team key={i} />);
+    }
+
+    return Items;
   };
 
   return (
@@ -69,6 +109,29 @@ const Create = () => {
             </select>
           </div>
 
+          {/* Nos of teams participating */}
+          <div className="flex w-[625px] gap-6 justify-between items-center mb-6">
+            <label
+              className="w-full text-end text-[#A9A9A9] text-lg font-medium "
+              htmlFor="tournamentName"
+            >
+              Number Of Teams:{" "}
+            </label>
+            <div className="w-full h-[40px] rounded-lg overflow-hidden text-ellipsis bg-[#303540] hover:border hover:border-amber-600">
+              <input
+                className="w-full h-full rounded-lg bg-inherit px-6 overflow-hidden text-ellipsis outline-amber-600 text-white font-base font-normal"
+                type="number"
+                id="nosOfTeam"
+                value={nosOfTeam}
+                onChange={(e) => {
+                  setNosOfTeam(e.target.value);
+                }}
+              />
+            </div>
+          </div>
+
+         
+
           {/* Player Ids */}
           <div className="flex w-[625px] gap-6  justify-between items-center mb-6">
             <label
@@ -88,19 +151,76 @@ const Create = () => {
             </div>
           </div>
 
-          {/* Participant Count */}
-          <div className="flex w-[625px] gap-6 justify-between items-center mb-6">
+          {/* Total Rounds */}
+          <div className="flex w-[625px] gap-6  justify-between items-center mb-6">
             <label
-              className="w-full text-end text-[#A9A9A9] text-lg font-medium "
-              htmlFor="participantCount"
+              className="text-end w-full text-[#A9A9A9] text-lg font-medium "
+              htmlFor="totalRounds"
+            >
+              Total Rounds:{" "}
+            </label>
+            <div className="w-full h-[40px] rounded-lg overflow-hidden text-ellipsis bg-[#303540] hover:border hover:border-amber-600">
+              <input
+                className="w-full h-full rounded-lg bg-inherit px-6 overflow-hidden text-ellipsis outline-amber-600 text-white font-base font-normal"
+                type="number"
+                id="totalRounds"
+                value={totalRounds}
+                onChange={(e) => setTotalRounds(e.target.value)}
+              />
+            </div>
+          </div>
+
+          {/* Round Winners */}
+          <div className="flex w-[625px] gap-6  justify-between items-center mb-6">
+            <label
+              className="text-end w-full text-[#A9A9A9] text-lg font-medium "
+              htmlFor="roundWinner"
+            >
+              Round Winners:{" "}
+            </label>
+            <div className="w-full h-[40px] rounded-lg overflow-hidden text-ellipsis bg-[#303540] hover:border hover:border-amber-600">
+              <input
+                className="w-full h-full rounded-lg bg-inherit px-6 overflow-hidden text-ellipsis outline-amber-600 text-white font-base font-normal"
+                type="text"
+                id="roundWinner"
+                value={roundWinner}
+                onChange={(e) => {setRoundWinner(e.target.value)}}
+              />
+            </div>
+          </div>
+
+          {/* Payment to Player */}
+          <div className="flex w-[625px] gap-6  justify-between items-center mb-6">
+            <label
+              className="text-end w-full text-[#A9A9A9] text-lg font-medium "
+              htmlFor="payment"
+            >
+              Payment to Players:{" "}
+            </label>
+            <div className="w-full h-[40px] rounded-lg overflow-hidden text-ellipsis bg-[#303540] hover:border hover:border-amber-600">
+              <input
+                className="w-full h-full rounded-lg bg-inherit px-6 overflow-hidden text-ellipsis outline-amber-600 text-white font-base font-normal"
+                type="text"
+                id="payment"
+                value={payment}
+                onChange={(e) => setPayment(e.target.value)}
+              />
+            </div>
+          </div>
+
+          {/* No of participants */}
+          <div className="flex w-[625px] gap-6  justify-between items-center mb-6">
+            <label
+              className="text-end w-full text-[#A9A9A9] text-lg font-medium "
+              htmlFor="participants"
             >
               Number of Participants:{" "}
             </label>
             <div className="w-full h-[40px] rounded-lg overflow-hidden text-ellipsis bg-[#303540] hover:border hover:border-amber-600">
               <input
                 className="w-full h-full rounded-lg bg-inherit px-6 overflow-hidden text-ellipsis outline-amber-600 text-white font-base font-normal"
-                type="number"
-                id="participantCount"
+                type="text"
+                id="participants"
                 value={participantCount}
                 onChange={(e) => setParticipantCount(e.target.value)}
               />
@@ -126,16 +246,23 @@ const Create = () => {
             </div>
           </div>
 
+           {/* Rendering no of teams */}
+           <div className="w-full flex justify-center items-center ml-20 mb-3">
+            <div className="flex gap-4 max-w-[450px] overflow-auto">
+              {handleRendering()}
+            </div>
+          </div>
+
           {/* Link to brackets */}
           <div className="flex w-[625px] gap-6 justify-between items-center mb-6">
             <div className="w-full"></div>
             <div className="w-full flex ">
-              <Link
-                to="/brackets"
+              <button
                 className="w-auto text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 "
+                type="submit"
               >
-                <button type="submit">Submit</button>
-              </Link>
+                Submit
+              </button>
             </div>
           </div>
         </form>
