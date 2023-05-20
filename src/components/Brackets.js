@@ -224,15 +224,22 @@ const final = {
 //     rankOne = 1;
 //   }
 // }
-
+const Teams = [
+  <Bracket game={game1} />,
+  <Bracket game={game6Test} />,
+  <Bracket game={final} />,
+];
 const Brackets = () => {
-  return <div>
-  {/* <Bracket game={game1} /> */}
-      <Bracket game={game6Test} />
-      {/* <Bracket game={final} /> */}
-
-
-  </div>;
+  return (
+    <div>
+      {Teams.map((Team, index) => (
+        <div key={index}>
+          <h2 style={{ color: "Red", fontSize: "16px" }}>Round {index + 1}</h2>
+          <button>{Team}</button>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default Brackets;
