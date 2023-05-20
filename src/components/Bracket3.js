@@ -234,14 +234,21 @@ const Brackets = () => {
     <div class="min-h-screen min-w-fit bg-gradient-to-br from-[#141e30] to-[#243b55]">
       {Teams.map((Team, index) => (
         <div key={index}>
-          <h2 className="ml-[850px] text-red-500 text-xl font-bold">Round {index + 1}</h2>
+          <h2 className="ml-[850px] text-red-500 text-xl font-bold">
+            Round {index + 1}
+          </h2>
           <div className="flex justify-center items-center">
-          <div className="border border-gray-500 rounded-md p-4">
-            <button>{Team}</button>
+            <div className="border border-gray-500 rounded-md p-4">
+              <button>{Team}</button>
             </div>
-            </div>
+          </div>
         </div>
       ))}
+      <div className="flex justify-center items-center">
+        <button className="mt-4 border border-white text-white bg-blue-500 px-4 py-2 rounded-md">
+          Next Rounds
+        </button>
+      </div>
     </div>
   );
 };
