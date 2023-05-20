@@ -19,7 +19,7 @@ const game2 = {
     visitor: {
       team: {
         id: "13",
-        name: "Team thau",
+        name: "Team thani",
       },
       score: {
         score: 0,
@@ -61,7 +61,6 @@ const game3 = {
   sides: {
     home: {
       team: {
-        id: "11",
         name: "Team gan",
       },
       score: {
@@ -70,7 +69,6 @@ const game3 = {
     },
     visitor: {
       team: {
-        id: "12",
         name: "Team ath",
       },
       score: {
@@ -142,42 +140,35 @@ const game6Test = {
   },
 };
 const game1 = {
-  //players Id
-  id: "1",
-  name: "Quatar-finals",//bracnket name
-  scheduled: Number(new Date()),//time for competition
+  name: "Quatar-finals", //bracnket name
+  scheduled: Number(new Date()), //time for competition
   sides: {
     home: {
       team: {
-        id: "10",
-        name: "Team meu"
+        name: "Team ashu",
       },
       score: {
-        score: 2
+        score: 2,
       },
       seed: {
-        displayName: "A1",
         rank: 1,
         sourceGame: game2,
-        sourcePool: {}
-      }
+      },
     },
     visitor: {
       team: {
-        id: "11",
-        name: "Team pau"
+        name: "Team kand",
       },
       score: {
-        score: 3
+        score: 3,
       },
       seed: {
         displayName: "A2",
         rank: 1,
         sourceGame: game3,
-        sourcePool: {}
-      }
-    }
-  }
+      },
+    },
+  },
 };
 const final = {
   id: "3",
@@ -216,30 +207,25 @@ const final = {
     },
   },
 };
-// function brac() {
-//   let rankOne = 0;
-//   let dk = [{ stage: "round 1" }];
-//   const findRounds1 = dk.filter((value) => value.stage === "round 1");
-//   if (findRounds1.length !== 0) {
-//     rankOne = 1;
-//   }
-// }
+
 const Teams = [
   <Bracket game={game1} />,
-  <Bracket game={game6Test} />,
-  <Bracket game={final} />,
+   <Bracket game={game6Test} />,
+   <Bracket game={final} />,
 ];
 const Brackets = () => {
   return (
     <div class="min-h-screen min-w-fit bg-gradient-to-br from-[#141e30] to-[#243b55]">
       {Teams.map((Team, index) => (
         <div key={index}>
-          <h2 className="ml-[850px] text-red-500 text-xl font-bold">Round {index + 1}</h2>
+          <h2 className="ml-[850px] text-red-500 text-xl font-bold">
+            Round {index + 1}
+          </h2>
           <div className="flex justify-center items-center">
-          <div className="border border-gray-500 rounded-md p-4">
-            <button>{Team}</button>
+            <div className="border border-gray-500 rounded-md p-4">
+              <button>{Team}</button>
             </div>
-            </div>
+          </div>
         </div>
       ))}
     </div>
