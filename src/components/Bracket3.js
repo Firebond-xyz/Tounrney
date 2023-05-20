@@ -226,8 +226,8 @@ const final = {
 // }
 const Teams = [
   <Bracket game={game1} />,
-  <Bracket game={game6Test} />,
-  <Bracket game={final} />,
+  // <Bracket game={game6Test} />,
+  // <Bracket game={final} />,
 ];
 const Brackets = () => {
   return (

@@ -10,7 +10,7 @@ const game2 = {
     home: {
       team: {
         id: "12",
-        name: "Team vibhu",
+        name: "Sam",
       },
       score: {
         score: 1,
@@ -19,7 +19,7 @@ const game2 = {
     visitor: {
       team: {
         id: "13",
-        name: "Team thau",
+        name: "Ram",
       },
       score: {
         score: 0,
@@ -37,7 +37,7 @@ const game5 = {
     home: {
       team: {
         id: "12",
-        name: "Team vibhu",
+        name: "Virat",
       },
       score: {
         score: 1,
@@ -46,7 +46,7 @@ const game5 = {
     visitor: {
       team: {
         id: "13",
-        name: "Team thau",
+        name: "Rohit",
       },
       score: {
         score: 0,
@@ -62,7 +62,7 @@ const game3 = {
     home: {
       team: {
         id: "11",
-        name: "Team gan",
+        name: "Jhon",
       },
       score: {
         score: 1,
@@ -71,7 +71,7 @@ const game3 = {
     visitor: {
       team: {
         id: "12",
-        name: "Team ath",
+        name: "Doe",
       },
       score: {
         score: 10,
@@ -87,7 +87,7 @@ const game4 = {
     home: {
       team: {
         id: "11",
-        name: "Team gan",
+        name: "Ganesh",
       },
       score: {
         score: 1,
@@ -96,7 +96,7 @@ const game4 = {
     visitor: {
       team: {
         id: "12",
-        name: "Team ath",
+        name: "Thani",
       },
       score: {
         score: 10,
@@ -112,7 +112,7 @@ const game6Test = {
     home: {
       team: {
         id: "11",
-        name: "Team gopi",
+        name: "Ganesh",
       },
       score: {
         score: 1,
@@ -127,7 +127,7 @@ const game6Test = {
     visitor: {
       team: {
         id: "12",
-        name: "Team ath",
+        name: "Rohit",
       },
       score: {
         score: 10,
@@ -150,7 +150,7 @@ const game1 = {
     home: {
       team: {
         id: "10",
-        name: "Team meu"
+        name: "Sam"
       },
       score: {
         score: 2
@@ -165,7 +165,7 @@ const game1 = {
     visitor: {
       team: {
         id: "11",
-        name: "Team pau"
+        name: "Jhon"
       },
       score: {
         score: 3
@@ -227,7 +227,7 @@ const final = {
 const Teams = [
   <Bracket game={game1} />,
   <Bracket game={game6Test} />,
-  <Bracket game={final} />,
+  // <Bracket game={final} />,
 ];
 const Brackets = () => {
   return (
