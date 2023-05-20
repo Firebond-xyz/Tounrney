@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Create = () => {
@@ -7,6 +7,12 @@ const Create = () => {
   const [playerIds, setPlayerIds] = useState("");
   const [participantCount, setParticipantCount] = useState("");
   const [gameName, setGameName] = useState("");
+  const [totalRounds, setTotalRounds] = useState("")
+  const [roundWinner, setRoundWinner] = useState("")
+  const [payment, setPayment] = useState("")
+  const [roundWinners, setRoundWinners] = useState([]);
+  const [payments, setPayments] = useState([]);
+  const [totalParticipants,setTotalParticipants] = useState("");
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -20,6 +26,16 @@ const Create = () => {
       gameName,
     });
   };
+
+  useEffect(()=>{
+    // Spliting payments using , separator
+    const newPayments = payment.split(',')
+    setPayments(newPayments);
+
+    // spliting round winners using , separator
+    const newWinners = roundWinner.split(',')
+    setRoundWinners(newWinners);
+  },[payment,roundWinner])
 
   return (
     <div className="min-h-screen min-w-fit bg-gradient-to-br from-[#141e30] to-[#243b55]">
@@ -88,19 +104,77 @@ const Create = () => {
             </div>
           </div>
 
-          {/* Participant Count */}
-          <div className="flex w-[625px] gap-6 justify-between items-center mb-6">
+          {/* Total Rounds */}
+          <div className="flex w-[625px] gap-6  justify-between items-center mb-6">
             <label
-              className="w-full text-end text-[#A9A9A9] text-lg font-medium "
-              htmlFor="participantCount"
+              className="text-end w-full text-[#A9A9A9] text-lg font-medium "
+              htmlFor="totalRounds"
+            >
+              Total Rounds:{" "}
+            </label>
+            <div className="w-full h-[40px] rounded-lg overflow-hidden text-ellipsis bg-[#303540] hover:border hover:border-amber-600">
+              <input
+                className="w-full h-full rounded-lg bg-inherit px-6 overflow-hidden text-ellipsis outline-amber-600 text-white font-base font-normal"
+                type="number"
+                id="totalRounds"
+                value={totalRounds}
+                onChange={(e) => setTotalRounds(e.target.value)}
+              />
+            </div>
+          </div>
+
+          {/* Round Winners */}
+          <div className="flex w-[625px] gap-6  justify-between items-center mb-6">
+            <label
+              className="text-end w-full text-[#A9A9A9] text-lg font-medium "
+              htmlFor="roundWinner"
+            >
+              Round Winners:{" "}
+            </label>
+            <div className="w-full h-[40px] rounded-lg overflow-hidden text-ellipsis bg-[#303540] hover:border hover:border-amber-600">
+              <input
+                className="w-full h-full rounded-lg bg-inherit px-6 overflow-hidden text-ellipsis outline-amber-600 text-white font-base font-normal"
+                type="text"
+                id="roundWinner"
+                value={roundWinner}
+                onChange={(e) => {setRoundWinner(e.target.value)}}
+              />
+            </div>
+          </div>
+
+         
+          {/* Payment to Player */}
+          <div className="flex w-[625px] gap-6  justify-between items-center mb-6">
+            <label
+              className="text-end w-full text-[#A9A9A9] text-lg font-medium "
+              htmlFor="payment"
+            >
+              Payment to Players:{" "}
+            </label>
+            <div className="w-full h-[40px] rounded-lg overflow-hidden text-ellipsis bg-[#303540] hover:border hover:border-amber-600">
+              <input
+                className="w-full h-full rounded-lg bg-inherit px-6 overflow-hidden text-ellipsis outline-amber-600 text-white font-base font-normal"
+                type="text"
+                id="payment"
+                value={payment}
+                onChange={(e) => setPayment(e.target.value)}
+              />
+            </div>
+          </div>
+
+          {/* No of participants */}
+          <div className="flex w-[625px] gap-6  justify-between items-center mb-6">
+            <label
+              className="text-end w-full text-[#A9A9A9] text-lg font-medium "
+              htmlFor="participants"
             >
               Number of Participants:{" "}
             </label>
             <div className="w-full h-[40px] rounded-lg overflow-hidden text-ellipsis bg-[#303540] hover:border hover:border-amber-600">
               <input
                 className="w-full h-full rounded-lg bg-inherit px-6 overflow-hidden text-ellipsis outline-amber-600 text-white font-base font-normal"
-                type="number"
-                id="participantCount"
+                type="text"
+                id="participants"
                 value={participantCount}
                 onChange={(e) => setParticipantCount(e.target.value)}
               />
