@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // import "./App.css";
 import { Bracket } from "react-tournament-bracket";
 const game2 = {
@@ -245,9 +246,9 @@ const Brackets = () => {
         </div>
       ))}
       <div className="flex justify-center items-center">
-        <button className="mt-4 border border-white text-white bg-blue-500 px-4 py-2 rounded-md">
+        <Link to="/bracket_two" className="mt-4 border border-white text-white bg-blue-500 px-4 py-2 rounded-md">
           Next Rounds
-        </button>
+        </Link>
       </div>
     </div>
   );
