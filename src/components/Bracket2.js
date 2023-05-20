@@ -11,7 +11,7 @@ const game2 = {
     home: {
       team: {
         id: "12",
-        name: "Team vibhu",
+        name: "Sam",
       },
       score: {
         score: 1,
@@ -20,7 +20,7 @@ const game2 = {
     visitor: {
       team: {
         id: "13",
-        name: "Team thau",
+        name: "Jhon",
       },
       score: {
         score: 0,
@@ -63,7 +63,7 @@ const game3 = {
     home: {
       team: {
         id: "11",
-        name: "Team gan",
+        name: "Ganesh",
       },
       score: {
         score: 1,
@@ -72,7 +72,7 @@ const game3 = {
     visitor: {
       team: {
         id: "12",
-        name: "Team ath",
+        name: "Rohit",
       },
       score: {
         score: 10,
@@ -145,13 +145,13 @@ const game6Test = {
 const game1 = {
   //players Id
   id: "1",
-  name: "Quatar-finals",//bracnket name
+  name: "Finals",//bracnket name
   scheduled: Number(new Date()),//time for competition
   sides: {
     home: {
       team: {
         id: "10",
-        name: "Team meu"
+        name: "Sam"
       },
       score: {
         score: 2
@@ -166,7 +166,7 @@ const game1 = {
     visitor: {
       team: {
         id: "11",
-        name: "Team pau"
+        name: "Rohit"
       },
       score: {
         score: 3
@@ -227,8 +227,6 @@ const final = {
 // }
 const Teams = [
   <Bracket game={game1} />,
-  <Bracket game={game6Test} />,
-  <Bracket game={final} />,
 ];
 const Bracket2 = () => {
   return (
