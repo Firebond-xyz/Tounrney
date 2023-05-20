@@ -246,7 +246,7 @@ const Bracket2 = () => {
         </div>
       ))}
       <div className="flex justify-center items-center">
-        <Link to="/bracket_three" className="mt-4 border border-white text-white bg-blue-500 px-4 py-2 rounded-md">
+        <Link to="/winner" className="mt-4 border border-white text-white bg-blue-500 px-4 py-2 rounded-md">
           Next Rounds
         </Link>
       </div>  
